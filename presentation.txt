@@ -1,0 +1,65 @@
+presentation
+
+styles
+style=1;BLUE;RED;YELLOW;BLUE
+style=2;WHITE;DARK_BLUE;DARK_GRAY;YELLOW
+/styles
+
+footer
+left=Apresentação sobre Slide Viewer
+center=#date;dd-MMM-yyyy
+right=#page
+/footer
+
+slide
+title=Apresenta��o sobre Slide Viewer
+1style=1
+content
+* Especifica��o do arquivo e estrutura de dados
+/content
+/slide
+
+slide
+title=Exemplo de lista de marcadores
+0style=2
+content
+* Algum texto com marcador, pois a linha come�a com caracter '*'.
+* Outro texto de primeiro n�vel.
+**  Um texto de segundo para o item anterior, pois tem '**'.
+**  Mais um texto de segundo n�vel.
+*Voltando para texto de primeiro n�vel.
+/content
+/slide
+
+slide
+title=Exemplo de lista numerada
+0style=2
+content
+# Algum texto com numera��o, pois a linha come�a com caracter '#'.
+# Outro texto de primeiro n�vel.
+## Um texto de segundo para o item anterior, pois tem '##'. Neste caso item � uma letra.
+## Mais um texto de segundo n�vel.
+#Voltando para texto de primeiro n�vel.
+/content
+/slide
+
+slide
+title=Outras considera��es
+0style=2
+content
+* Imprima slides dentro de bordas (80 colunas).
+* O slides tem no m�nimo 20 linhas, j� contando as bordas, t�tulo do slide e rodap� da
+apresenta��o.
+* Considere o desenho do slide como uma matriz de caracteres
+** Inicie ela preenchendo com espa�os na cor de fundo definida pelo estilo.
+** Escreva a bordas na matriz.
+** Preencha com conte�dos de texto.
+* Procedimento:
+** Sistema iniciar solicitando caminho para o arquivo da apresenta��o.
+** Primeiro slide da apresenta��o � mostrado conforme conte�do e estilos definidos.
+** Navega��o fica esperando que o usu�rio escolha um novo slide ou digite 0 para sair.
+** Controle de navega��o deve ser consistente e gerar exce��o em caso de problemas.
+/content
+/slide
+
+/presentation
