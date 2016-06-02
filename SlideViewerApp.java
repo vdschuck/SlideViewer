@@ -13,11 +13,13 @@ public class SlideViewerApp {
             SlideDesigner sd = new SlideDesigner();
             Navigator nav = new Navigator(pp.getSlides());
             System.out.println(sd.drawSlide(pp.getSlide(nav.getCurrent()), nav.getCurrent(), pp.getFoo()));
-
+            PresentationWriter teste = new PresentationWriter();
+            teste.save("teste", pp);
+            
             int op = 0;
             do {
                 try {
-                    op = ReadData.readInt("1-Anterior, 2-Proximo, 3-Especifico, 0-Sair");
+                    op = ReadData.readInt("1-Anterior, 2-Proximo, 3-Especifico, 4-Editar, 0-Sair");
                     switch (op) {
                         case 1:
                             nav.previous();
@@ -31,6 +33,8 @@ public class SlideViewerApp {
                             int num = ReadData.readInt("Numero do slide: ");
                             nav.Goto(num);
                             System.out.println(sd.drawSlide(pp.getSlide(nav.getCurrent()), nav.getCurrent(), pp.getFoo()));
+                        case 4:
+                            
                         case 0:
                             break;
                     }

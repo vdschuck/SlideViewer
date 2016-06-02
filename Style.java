@@ -93,13 +93,21 @@ public class Style {
     public String getTextColor() {
         return textColor;
     }
-
+    
+    public String getTextColorWrite() {
+        return convertTextColorWrite(textColor);        
+    } 
+    
     public void setTextColor(String textColor) {
         this.textColor = convertTextColor(textColor);
     }
 
     public String getBackgroundColor() {
         return backgroundColor;
+    }
+     
+    public String getBackgroundColorWrite() {
+        return convertBackColorWrite(backgroundColor);
     }
 
     public void setBackgroundColor(String backgroundColor) {
@@ -109,6 +117,10 @@ public class Style {
     public String getTitleTextColor() {
         return titleTextColor;
     }
+    
+    public String getTitleTextColorWrite() {
+        return convertTextColorWrite(titleTextColor);
+    }
 
     public void setTitleTextColor(String titleTextColor) {
         this.titleTextColor = convertTextColor(titleTextColor);
@@ -116,6 +128,10 @@ public class Style {
 
     public String getTitleBackColor() {
         return titleBackColor;
+    }
+    
+    public String getTitleBackColorWrite() {
+        return convertBackColorWrite(titleBackColor);
     }
 
     public void setTitleBackColor(String titleBackColor) {
