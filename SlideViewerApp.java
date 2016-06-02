@@ -13,8 +13,9 @@ public class SlideViewerApp {
             SlideDesigner sd = new SlideDesigner();
             Navigator nav = new Navigator(pp.getSlides());
             System.out.println(sd.drawSlide(pp.getSlide(nav.getCurrent()), nav.getCurrent(), pp.getFoo()));
+            
             PresentationWriter teste = new PresentationWriter();
-            teste.save("teste", pp);
+            teste.save("teste.txt", pp);
             
             int op = 0;
             do {

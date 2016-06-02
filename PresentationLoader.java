@@ -58,7 +58,7 @@ public class PresentationLoader {
             try {
                 in.close();
             } catch (Exception e) {
-                System.out.println("Erro ao criar a apresentação");
+                System.out.println("Presentation Loader ERRO: " + e);
             }
         }
         return p;
@@ -75,12 +75,12 @@ public class PresentationLoader {
                 if(lines.startsWith("style=")){
                     lines = lines.substring(6);
                     String[] cores = lines.split(";");
-                    Style s = new Style(cores[1],cores[2],cores[3],cores[4]); 
+                    Style s = new Style(cores[0], cores[1],cores[2],cores[3],cores[4]); 
                     p.addStyle(s);
                 }
             }
             } catch (IOException e) {
-                System.out.println("Erro na leitura do arquivo.");
+                System.out.println("Presentation Loader ERRO: " + e);
             } 
     }
 
@@ -106,7 +106,7 @@ public class PresentationLoader {
             }
         p.setFoo(f);
         } catch (IOException e) {
-                System.out.println("Erro na leitura do arquivo.");
+                System.out.println("Presentation Loader ERRO: " + e);
         }
     }
     
@@ -134,7 +134,7 @@ public class PresentationLoader {
             }
         p.setSlide(s, nslide);
         } catch (IOException e) {
-                System.out.println("Erro na leitura do arquivo.");
+                System.out.println("Presentation Loader ERRO: " + e);
         }
     }
     
@@ -165,7 +165,7 @@ public class PresentationLoader {
 
             }
         } catch (IOException e) {
-                System.out.println("Erro na do conteúdo.");
+                System.out.println("Presentation Loader ERRO: " + e);
         }
     }
 }
