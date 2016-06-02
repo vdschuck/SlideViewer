@@ -3,9 +3,10 @@ package SlideViewer;
 public class ListIthem extends Element {
     private boolean numbered;
     private int order;
-
+    int level;
+    
     public ListIthem(String e) {
-        super(e);
+       super(e);
     }
     
     public boolean isNumbered() {
@@ -25,22 +26,35 @@ public class ListIthem extends Element {
         this.order = order;
     }    
     
-    public String marcadores(){
+    public void adicionarTopico(ListIthem item){
         String line = super.getText();
-            if(line.startsWith("#",0) && line.startsWith(" ",2)){
+        if(line.startsWith("#",0) && line.startsWith(" ",2)){
+               item.setLevel(2);
                char letras = (char)order;
-               line = "\t " + letras + ") " + line.substring(3);
-            }
-            else if(line.startsWith(" ",2) && line.startsWith("*",0)){
-                line = "\t " + line;
-            }
-            else if(line.startsWith("#")){
-               line = order + ". " + line.substring(1);
-            }
-            //Usar a notação ASCCI para obter as lettras, sendo que 65 é "A", podemos ir adicionando de acordo com o order.
-
-
-            return line;
+               item.setText(letras + ")" + line.substring(3));
         }
+        else if(line.startsWith(" ",2) && line.startsWith("*",0)){
+                item.setLevel(2);
+                item.setText(line);
+        }
+        
+        else if(line.startsWith("#")){
+               item.setText(order + ". " + line.substring(1));
+        }
+    }
+ 
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        StringBuilder lv = new StringBuilder();
+        for(int i = 0; i <= level;i++){
+            lv.append("\t");
+        }
+        super.setText(lv + super.getText());
+    }
+    
+    
 }
 
