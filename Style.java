@@ -14,6 +14,7 @@ public class Style {
         setTitleBackColor(titleBackColor);
     }
 
+    //Converte para ASCII
     private String convertTextColor(String cor) {
         if (cor.equalsIgnoreCase("black")) {
             return "\u001b[0;30m";
@@ -32,6 +33,7 @@ public class Style {
         }
     }
 
+    //Converte para ASCII
     private String convertBackColor(String cor) {
         if (cor.equalsIgnoreCase("red")) {
             return "\u001b[41m";
@@ -45,6 +47,44 @@ public class Style {
             return "\u001B[1;44m";
         } else if (cor.equalsIgnoreCase("dark_gray")) {
             return "\u001B[1;47m";
+        } else {
+            return "Cor Invalida ";
+        }
+    }
+    
+    //Converte de ASCII para texto
+    private String convertTextColorWrite(String cor) {
+        if (cor.equalsIgnoreCase("\u001b[0;30m")) {
+            return "black";
+        } else if (cor.equalsIgnoreCase("\u001B[34m")) {
+            return "blue";
+        } else if (cor.equalsIgnoreCase("\u001B[33m")) {
+            return "yellow";
+        } else if (cor.equalsIgnoreCase("\u001B[37m")) {
+            return "white";
+        } else if (cor.equalsIgnoreCase("\u001B[1;34m")) {
+            return "dark_blue";
+        } else if (cor.equalsIgnoreCase("\u001B[1;37m")) {
+            return "dark_gray";
+        } else {
+            return "Cor Invalida ";
+        }
+    }
+    
+    //Converte de ASCII para texto
+    private String convertBackColorWrite(String cor) {
+        if (cor.equalsIgnoreCase("\u001b[41m")) {
+            return "red";
+        } else if (cor.equalsIgnoreCase("\u001B[44m")) {
+            return "blue";
+        } else if (cor.equalsIgnoreCase("\u001B[43m")) {
+            return "yellow";
+        } else if (cor.equalsIgnoreCase("\u001B[47m")) {
+            return "white";
+        } else if (cor.equalsIgnoreCase("\u001B[1;44m")) {
+            return "dark_blue";
+        } else if (cor.equalsIgnoreCase("\u001B[1;47m")) {
+            return "dark_gray";
         } else {
             return "Cor Invalida ";
         }
