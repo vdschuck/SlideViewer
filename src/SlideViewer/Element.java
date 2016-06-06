@@ -16,6 +16,7 @@ public class Element implements Printable {
         return text;
     }
 
+    @Override
     public String print() {
         return text;
     }
