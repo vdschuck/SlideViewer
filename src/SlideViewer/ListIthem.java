@@ -41,7 +41,8 @@ public class ListIthem extends Element {
     public void setLevel(int level) {
         StringBuilder lv = new StringBuilder();
         for(int i = 1; i < level;i++){
-            lv.append("\t");
+            //=\t
+            lv.append("        ");
         }
         lv.append(super.getText());
         
