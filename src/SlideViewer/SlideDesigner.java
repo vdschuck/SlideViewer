@@ -11,7 +11,9 @@ public class SlideDesigner {
         String corLetra = slide.getStyle().getTextColor();
         String corFundo = slide.getStyle().getBackgroundColor();
 
-        drawAll.append("\n" + corFundo + bordaSup);
+        drawAll.append("\n");
+        drawAll.append(corFundo);
+        drawAll.append(bordaSup);
         drawAll.append(drawTitle(slide.getTitle(), slide.getStyle()));
 
         drawAll.append(corFundo);
@@ -27,7 +29,8 @@ public class SlideDesigner {
         drawAll.append("\u001b[0m");
 
         drawAll.append("\n");
-        drawAll.append(corFundo + bordaSup);
+        drawAll.append(corFundo);
+        drawAll.append(bordaSup);
 
         return drawAll.toString();
     }
@@ -69,68 +72,64 @@ public class SlideDesigner {
     private String drawBody(Slide slide) {
         StringBuilder bd = new StringBuilder();
         String texto;
-
-        String bordaLat = "|";
+        
         bd.append("\n");
 
         bd.append(slide.getStyle().getBackgroundColor());
         bd.append(slide.getStyle().getTextColor());
-
-        int contLetras = 0;
-        int i = 0;
-        for (; i < slide.getElem().numElements; i++) {
+        
+        Node temp = slide.getElem().head;
+        
+        while(temp != null){
             bd.append(slide.getStyle().getBackgroundColor());
             bd.append(slide.getStyle().getTextColor());
-            contLetras = slide.getElem(i).toString().length();
-            texto = slide.getElem(i).toString();
-
-            bd.append(bordaLat);
-            bd.append(texto);
-
-//            if(texto.length() > 73){
-//            bd.append(texto.substring(0,73)); }
-//            else{ bd.append(texto); }
-            if (contLetras < 80 && texto.startsWith("*", 2) == false) {
-                for (int j = 0; j < 79 - contLetras; j++) {
-                    bd.append(" ");
-                }
-            }
-            //            else if(contLetras > 80){
-            //                String temp = texto.substring(73);
-            //                bd.append("\n");
-            //                bd.append("\t"+ temp);
-            //                bd.append(slide.getStyle().getBackgroundColor());
-            //                 for(int j =0;j < 73 - contLetras;j++){
-            //                bd.append(" ");
-            //             }
-            //            }
-            else {
-                for (int j = 0; j < 73 - contLetras; j++) {
-                    bd.append(" ");
-                }
-            }
-            bd.append(bordaLat);
-            bd.append("\n");
-        }
-
-        bd.append(slide.getStyle().getBackgroundColor());
-        bd.append(slide.getStyle().getTextColor());
-        while (i <= 19) {
-
-            bd.append(bordaLat);
-            for (int j = 0; j < 79; j++) {
-                bd.append(" ");
-            }
-            bd.append(bordaLat);
-            bd.append("\n");
+            texto = temp.getElement().toString();
+            
+           // bd.append("|");
+            //Ajusta e adicionar as bordar do texto além de providênciar os respectivos cortes
+            bd.append(contLetras(texto));
+            
             bd.append(slide.getStyle().getBackgroundColor());
             bd.append(slide.getStyle().getTextColor());
-            i++;
+            temp = temp.next;
+            bd.append("\n");
         }
-
         return bd.toString();
     }
-
+    
+    private String contLetras(String texto){
+        int contLetras = texto.length();
+        StringBuilder fText = new StringBuilder();
+        String bar = "|";
+        if(contLetras <= 79){
+            fText.append(bar);
+            fText.append(texto);
+            for(int i = 0;i < 79 - contLetras;i++){
+                fText.append(" ");
+            }
+            fText.append(bar);
+        }
+        
+        else{
+            String corte1 = texto.substring(0, 78);
+            String corte2 = texto.substring(78);
+            
+            fText.append(bar);
+            fText.append(corte1);
+            fText.append("-");
+            fText.append(bar);
+            fText.append("\n");
+                
+            if(corte1.startsWith(" ")){
+                fText.append(contLetras("        " + corte2));
+            }
+            else{
+                fText.append(contLetras(corte2));
+            }
+        }
+        return fText.toString();
+    }
+    
     private String drawFooter(Footer footer, int page) {
         StringBuilder fo = new StringBuilder();
         //3 é o numero de atributos do Footer
