@@ -1,4 +1,4 @@
-presentation
+﻿presentation
 
 styles
 style=1;BLUE;RED;YELLOW;BLUE
@@ -51,7 +51,7 @@ content
 * O slides tem no mínimo 20 linhas, já contando as bordas, título do slide e rodapé da
 apresentação.
 * Considere o desenho do slide como uma matriz de caracteres
-** Inicie ela preenchendo com espa�os na cor de fundo definida pelo estilo.
+** Inicie ela preenchendo com espaços na cor de fundo definida pelo estilo.
 ** Escreva a bordas na matriz.
 ** Preencha com conteúdos de texto.
 * Procedimento:
