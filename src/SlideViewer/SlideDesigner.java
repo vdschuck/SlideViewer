@@ -14,6 +14,7 @@ public class SlideDesigner {
         drawAll.append("\n");
         drawAll.append(corFundo);
         drawAll.append(bordaSup);
+      
         drawAll.append(drawTitle(slide.getTitle(), slide.getStyle()));
 
         drawAll.append(corFundo);
@@ -79,13 +80,12 @@ public class SlideDesigner {
         bd.append(slide.getStyle().getTextColor());
         
         Node temp = slide.getElem().head;
-        
+        //Passado pelos elementos armazenados no Slide
         while(temp != null){
             bd.append(slide.getStyle().getBackgroundColor());
             bd.append(slide.getStyle().getTextColor());
             texto = temp.getElement().toString();
             
-           // bd.append("|");
             //Ajusta e adicionar as bordar do texto além de providênciar os respectivos cortes
             bd.append(contLetras(texto));
             
@@ -101,6 +101,7 @@ public class SlideDesigner {
         int contLetras = texto.length();
         StringBuilder fText = new StringBuilder();
         String bar = "|";
+        
         if(contLetras <= 79){
             fText.append(bar);
             fText.append(texto);
@@ -111,6 +112,7 @@ public class SlideDesigner {
         }
         
         else{
+            //Divide o texto no limite da borda do slide e o resto
             String corte1 = texto.substring(0, 78);
             String corte2 = texto.substring(78);
             
@@ -121,9 +123,11 @@ public class SlideDesigner {
             fText.append("\n");
                 
             if(corte1.startsWith(" ")){
+                //Chama o método novamente para adicionar os espaços necessários
                 fText.append(contLetras("        " + corte2));
             }
             else{
+                //Adiciona os espaços
                 fText.append(contLetras(corte2));
             }
         }
