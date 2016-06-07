@@ -91,8 +91,25 @@ public class SlideDesigner {
             
             bd.append(slide.getStyle().getBackgroundColor());
             bd.append(slide.getStyle().getTextColor());
+            
             temp = temp.next;
             bd.append("\n");
+            
+            bd.append(slide.getStyle().getBackgroundColor());
+            bd.append(slide.getStyle().getTextColor());
+        }
+        for(int i = slide.getElem().numElements;i <= 18;i++){
+            //Adicionado a borda
+            bd.append("|");
+            //Colocado os espaços em branco
+            for(int j = 0;j <= 9;j++){
+                bd.append("\t");
+            }
+            bd.append("|");
+            bd.append("\n");
+            
+            bd.append(slide.getStyle().getBackgroundColor());
+            bd.append(slide.getStyle().getTextColor());
         }
         return bd.toString();
     }
