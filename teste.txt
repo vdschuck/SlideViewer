@@ -1,0 +1,47 @@
+presentation
+
+ styles
+ style=1;blue;red;yellow;blue
+ style=2;white;dark_blue;dark_gray;yellow
+ /styles
+
+ footer
+ left=Apresentação sobre Slide Viewer
+ center=#date;dd-MMM-yyyy
+ right=#page
+ /footer
+
+ slide
+ title=APRESENTAÇÃO SOBRE SLIDE VIEWER
+ style=1
+ /slide
+ content 
+* Especificaçãoo do arquivo e estrutura de dados 
+ /content 
+
+ slide
+ title=EXEMPLO DE LISTA DE MARCADORES
+ style=2
+ /slide
+ content 
+* Algum texto com marcador, pois a linha começa com caracter '*'. * Outro texto de primeiro nível.         **  Um texto de segundo para o item anterior, pois tem '**'.         **  Mais um texto de segundo nível. *Voltando para texto de primeiro nível. 
+ /content 
+
+ slide
+ title=EXEMPLO DE LISTA NUMERADA
+ style=2
+ /slide
+ content 
+1.  Algum texto com numeração, pois a linha começa com caracter '#'. 2.  Outro texto de primeiro nível.         a)Um texto de segundo para o item anterior, pois tem '##'. Neste caso item é uma letra.         b)Mais um texto de segundo nível. 3. Voltando para texto de primeiro nível. 
+ /content 
+
+ slide
+ title=OUTRAS CONSIDERAÇÕES
+ style=2
+ /slide
+ content 
+* Imprima slides dentro de bordas (80 colunas). * O slides tem no mínimo 20 linhas, já contando as bordas, título do slide e rodapé da apresentação. * Considere o desenho do slide como uma matriz de caracteres         ** Inicie ela preenchendo com espaços na cor de fundo definida pelo estilo.         ** Escreva a bordas na matriz.         ** Preencha com conteúdos de texto. * Procedimento:         ** Sistema iniciar solicitando caminho para o arquivo da apresentação.         ** Primeiro slide da apresentação é mostrado conforme conteúdo e estilos definidos.         ** Navegaçãoo fica esperando que o usuário escolha um novo slide ou digite 0 para sair.         ** Controle de navegação deve ser consistente e gerar exceção em caso de problemas. 
+ /content 
+
+
+ /presentation
