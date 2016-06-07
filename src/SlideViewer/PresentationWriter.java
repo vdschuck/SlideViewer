@@ -53,15 +53,23 @@ public class PresentationWriter {
      
     public String slideWrite(PrintWriter out, Presentation p) {
         StringBuilder buffer = new StringBuilder();
-
+        Node temp;
+        
         for (int i = 0; i < p.getSlides().length; i++) {
             buffer.append("\n slide");
             buffer.append("\n title=").append(p.getSlide(i).getTitle().print());
             buffer.append("\n style=").append(p.getSlide(i).getStyle().getId());
-            buffer.append("\n /slide");
             buffer.append("\n content \n");
-            buffer.append(p.getSlide(i).getElem());
-            buffer.append("\n /content \n");
+            
+            temp = p.getSlide(i).getElem().head;       
+            while(temp != null){
+                buffer.append(temp.element.toString());
+                buffer.append("\n");
+                temp = temp.next;
+            } 
+            
+            buffer.append("/content \n");
+            buffer.append("/slide \n");
         }
         return buffer.toString();
 
