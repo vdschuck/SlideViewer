@@ -40,6 +40,7 @@ public class Slide<E> implements Printable{
         this.style = style;
     }
 
+    @Override
     public String print() {
         return "";
     }
