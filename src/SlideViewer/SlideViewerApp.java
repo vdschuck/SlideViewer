@@ -11,9 +11,8 @@ public class SlideViewerApp {
             String arquivo = JOptionPane.showInputDialog("Digite o nome do arquivo: ");
             Presentation pp = pl.loader(arquivo);
             SlideDesigner sd = new SlideDesigner();
-            Navigator nav = new Navigator(pp.getSlides());
+            Navigator<SinglyLinkedList> nav = new Navigator(pp.getSlides());
             System.out.println(sd.drawSlide(pp.getSlide(nav.getCurrent()), nav.getCurrent(), pp.getFoo()));
-            
             PresentationWriter teste = new PresentationWriter();
             teste.save("teste.txt", pp);
             
