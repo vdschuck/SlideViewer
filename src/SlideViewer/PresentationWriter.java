@@ -55,7 +55,7 @@ public class PresentationWriter {
         StringBuilder buffer = new StringBuilder();
         Node temp;
         
-        for (int i = 0; i < p.getSlides().length; i++) {
+        for (int i = 0; i < p.getSlides().numElements; i++) {
             buffer.append("\n slide");
             buffer.append("\n title=").append(p.getSlide(i).getTitle().print());
             buffer.append("\n style=").append(p.getSlide(i).getStyle().getId());
