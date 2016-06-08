@@ -17,7 +17,7 @@ public class PresentationLoader {
         String line;
         
         //Quantidade de slides
-        Slide slides[] = new Slide[4];
+        //Slide slides[] = new Slide[4];
         //Slides que está criando
         int nSlide = 0;
         //Variavel que será montada e retornada pelo método
@@ -31,7 +31,7 @@ public class PresentationLoader {
                    break;                 
                 }
                 else if(line.contains("presentation")){
-                    p = new Presentation(2,slides);
+                    p = new Presentation();
                 }
                 //Montando style
                 else if("styles".equals(line)){
@@ -43,10 +43,8 @@ public class PresentationLoader {
                 }
                 //Montando slide
                 else if("slide".equals(line)){
-                   if(nSlide < slides.length){
                     readSlide(in,p,nSlide);
-                    nSlide++;
-                   }
+                    nSlide++;                
                 }
             
             }
@@ -126,7 +124,8 @@ public class PresentationLoader {
                 }
                 else if(lines.startsWith("0") || lines.startsWith("1")){
                     /*Seta o Style de s, pegando os style armazenados no presentation 0 ou 1*/
-                    s.setStyle(p.getStyle(Integer.parseInt(lines.substring(7))-1));
+                    int codStyle = Integer.parseInt(lines.substring(0,1));
+                    s.setStyle(p.getStyle(codStyle));
                 }
                 else if("content".equals(lines)){
                     readContend(in,s);
