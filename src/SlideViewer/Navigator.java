@@ -2,13 +2,13 @@ package SlideViewer;
 
 public class Navigator<E> {
     
-    protected E[] elements;
+    protected SinglyLinkedList<E> elements;
     int numElements;
     private int current;
     
-    public Navigator(E[] el){
+    public Navigator(SinglyLinkedList<E> el){
         elements = el;
-        numElements = el.length;
+        numElements = el.numElements;
     }
     
     public void first(){
