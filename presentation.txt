@@ -13,7 +13,7 @@ right=#page
 
 slide
 title=Apresentação sobre Slide Viewer
-1style=1
+0style=1
 content
 * Especificaçãoo do arquivo e estrutura de dados
 /content
@@ -21,7 +21,7 @@ content
 
 slide
 title=Exemplo de lista de marcadores
-0style=2
+1style=2
 content
 * Algum texto com marcador, pois a linha começa com caracter '*'.
 * Outro texto de primeiro nível.
@@ -33,7 +33,7 @@ content
 
 slide
 title=Exemplo de lista numerada
-0style=2
+1style=2
 content
 # Algum texto com numeração, pois a linha começa com caracter '#'.
 # Outro texto de primeiro nível.
@@ -45,7 +45,7 @@ content
 
 slide
 title=Outras considerações
-0style=2
+1style=2
 content
 * Imprima slides dentro de bordas (80 colunas).
 * O slides tem no mínimo 20 linhas, já contando as bordas, título do slide e rodapé da
