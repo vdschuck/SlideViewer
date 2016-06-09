@@ -13,7 +13,7 @@ public class ReadData {
                     return 0;
                 } else {
                     int j = Integer.valueOf(x);
-                    if (j >= 0 && j <= 4) {
+                    if (j >= 0 && j <= 6) {
                         return j;
                     } else {
                         throw new Exception("Valor inválido! ");

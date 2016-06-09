@@ -15,7 +15,9 @@ public class PresentationEditor {
         pres.getSlides().remove(page);
     }
     
-    public void move(int form, int to, Presentation pres){
+    public void move(int from, int to, Presentation pres){
+      pres.getSlides().insert(pres, to);
+      pres.getSlides().remove(from);
        
     }
     

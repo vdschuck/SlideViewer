@@ -3,25 +3,23 @@ package SlideViewer;
 public class Navigator<E> {
     
     protected SinglyLinkedList<E> elements;
-    int numElements;
     private int current;
     
     public Navigator(SinglyLinkedList<E> el){
         elements = el;
-        numElements = el.numElements;
     }
     
     public void first(){
         if(elements == null)
-            throw new IndexOutOfBoundsException();              
+            throw new IndexOutOfBoundsException();
+        current = 0;
     }
     
     public void next() throws Exception {
-        if(current < numElements){
+        if(current < elements.numElements)
             current += 1;
-        }
         else{
-            throw new IllegalArgumentException("Não tem mais slides! "); 
+            throw new NullPointerException();
         }
     }
     
@@ -37,11 +35,11 @@ public class Navigator<E> {
     public void last(){
         if(elements == null)
             throw new IndexOutOfBoundsException();
-        current = numElements;
+        current -= - 1;
     }
     
     public void Goto(int index){
-        if(index >= 0 && index < numElements){
+        if(index >= 0 && index < elements.numElements){
             current = index;
         }
         else{
@@ -50,7 +48,7 @@ public class Navigator<E> {
     }
     
     public int getCurrent(){
-        if (current < 0  ||  current >= numElements)
+        if (current < 0  ||  current >= elements.numElements)
             throw new IndexOutOfBoundsException();
   	return current;
     }
