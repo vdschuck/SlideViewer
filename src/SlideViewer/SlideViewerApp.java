@@ -13,8 +13,8 @@ public class SlideViewerApp {
             SlideDesigner sd = new SlideDesigner();
             Navigator<SinglyLinkedList> nav = new Navigator(pp.getSlides());
             System.out.println(sd.drawSlide(pp.getSlide(nav.getCurrent()), nav.getCurrent(), pp.getFoo()));
-            PresentationWriter teste = new PresentationWriter();
-            teste.save("teste.txt", pp);
+            PresentationWriter salvar = new PresentationWriter();
+            salvar.save("teste.txt", pp);
 
             int op = 0;
             do {
@@ -61,37 +61,30 @@ public class SlideViewerApp {
                                     break;
                                 }
                                 case 5: {
-                                    String pos = JOptionPane.showInputDialog("A posição do slide que deseja alterar o titulo: ");
-                                    int numPos = Integer.parseInt(pos);
+                                    int pos = ReadData.readIntSlide("A posição do slide que deseja alterar o titulo: ", pp.getSlides().numElements);
                                     try{
-                                        if(numPos > pp.getSlides().numElements){
-                                            throw new IndexOutOfBoundsException();
+                                        String titulo = JOptionPane.showInputDialog("Digite o titulo que deseja");
+                                        if(titulo.length() > 57){
+                                            JOptionPane.showMessageDialog(null, "Digite um número de caracteres válido", "Erro de escrita", JOptionPane.ERROR_MESSAGE); 
                                         }
-                                        else if(numPos < 0){
-                                            throw new UnderflowException();
+                                        else{
+                                            Title nTitle = new Title(titulo);
+                                            edit.changeTitle(nTitle, pos, pp);
                                         }
-                                        else{ 
-                                            String titulo = JOptionPane.showInputDialog("Digite o titulo que deseja");
-                                            if(titulo.length() > 57){
-                                                JOptionPane.showMessageDialog(null, "Digite um número de caracteres válido", "Erro de escrita", JOptionPane.ERROR_MESSAGE); 
-                                            }
-                                            else{
-                                                Title nTitle = new Title(titulo);
-                                                edit.changeTitle(nTitle, numPos, pp);
-                                            }
-                                        }
-                                    }                             
-                                    catch(IndexOutOfBoundsException e){
-                                         JOptionPane.showMessageDialog(null, "O slide escolhido não é válido", "Erro na leitura", JOptionPane.ERROR_MESSAGE);
+                                        
                                     }
-                                    catch(UnderflowException e){
-                                        JOptionPane.showMessageDialog(null, "Digite um slide maior", "Erro na leitura", JOptionPane.ERROR_MESSAGE);
+                                    catch(Exception e){
+                                         JOptionPane.showMessageDialog(null, "Verique as informações digitadas", "Erro na leitura", JOptionPane.ERROR_MESSAGE);
                                     }
                                     break;
                                 }
                                 case 6: {
                                     int pos = ReadData.readIntSlide("Slide que deseja adicionar texto: ", pp.getSlides().numElements);
-                                    //edit.addElement(null, n, pos, pp);
+                                    String texto = JOptionPane.showInputDialog("Digite o texto que gostaria de adicionar");
+                                    String linhaPos = JOptionPane.showInputDialog("Digite onde gostaria a posição onde gostaria de colocar");
+                                    int posLinha = Integer.parseInt(linhaPos);
+                                    ListItem newItem = new ListItem(texto,posLinha);
+                                    edit.addElement(newItem, posLinha,pos, pp);
                                     break;
                                 }
                             }
@@ -113,14 +106,14 @@ public class SlideViewerApp {
                     JOptionPane.showMessageDialog(null, ex);
                     op = -1;
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "A apresentação acabou ou slide não existe! " + ex);
+                    JOptionPane.showMessageDialog(null, "A apresentação acabou ou slide não existe! ");
                 }
             } while (op != 0);
 
         } catch (FileNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Arquivo inválido! ");
         } catch (Exception ex) {
-            System.out.println("Erro ao criar a apresentação.");
+            System.out.println("Erro ao criar a apresentação." + ex);
         }
     }
 }
