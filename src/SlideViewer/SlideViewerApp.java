@@ -61,9 +61,29 @@ public class SlideViewerApp {
                                     break;
                                 }
                                 case 5: {
-                                    int pos = ReadData.readIntSlide("Slide que deseja alterar o titulo: ", pp.getSlides().numElements);
-                                    int title = ReadData.readIntSlide("Novo titulo: ", pp.getSlides().numElements);
-                                    edit.changeTitle(null, pos, pp);
+                                    String pos = JOptionPane.showInputDialog("A posição do slide que deseja alterar o titulo: ");
+                                    int numPos = Integer.parseInt(pos);
+                                    try{
+                                        if(numPos > pp.getSlides().numElements){
+                                            throw new IndexOutOfBoundsException();
+                                        }
+                                        else if(numPos < 0){
+                                            throw new UnderflowException();
+                                        }
+                                        else{         
+                                            Title nTitle = new Title(JOptionPane.showInputDialog("Digite o titulo que deseja"));
+                                            edit.changeTitle(nTitle, numPos, pp);
+                                        }
+                                    }                             
+                                    catch(IndexOutOfBoundsException e){
+                                        System.out.println("O slide escolhido não é válido");
+                                    }
+                                    catch(UnderflowException e){
+                                        System.out.println("Digite um slide maior");
+                                    }
+                                    catch(Exception e){
+                                        System.out.println("Não foi possível encontrar esse slide");
+                                    }
                                     break;
                                 }
                                 case 6: {
