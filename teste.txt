@@ -15,7 +15,7 @@ presentation
  title=APRESENTAÇÃO SOBRE SLIDE VIEWER
  style=1
  content 
-* Especificaçãoo do arquivo e estrutura de dados
+* Especificação do arquivo e estrutura de dados
 /content 
 /slide 
 
