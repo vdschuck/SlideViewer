@@ -39,7 +39,7 @@ content
 # Outro texto de primeiro nível.
 ## Um texto de segundo para o item anterior, pois tem '##'. Neste caso item é uma letra.
 ## Mais um texto de segundo nível.
-#Voltando para texto de primeiro nível.
+# Voltando para texto de primeiro nível.
 /content
 /slide
 
@@ -48,9 +48,8 @@ title=Outras considerações
 1style=2
 content
 * Imprima slides dentro de bordas (80 colunas).
-* O slides tem no mínimo 20 linhas, já contando as bordas, título do slide e rodapé da
-apresentação.
-* Considere o desenho do slide como uma matriz de caracteres
+* O slides tem no mínimo 20 linhas, já contando as bordas, título do slide e rodapé da apresentação.
+* Considere o desenho do slide como uma matriz de caracteres.
 ** Inicie ela preenchendo com espaços na cor de fundo definida pelo estilo.
 ** Escreva a bordas na matriz.
 ** Preencha com conteúdos de texto.
