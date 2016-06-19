@@ -166,7 +166,7 @@ public class PresentationLoader {
                 else{
                     ls = new ListItem(lines,cont);
                     ls.adicionarTopico(ls, cont,lines);
-                    s.addElement(ls.getText());
+                    s.addElement(ls);
                     cont++;
                 }
 
