@@ -79,12 +79,12 @@ public class SlideDesigner {
         bd.append(slide.getStyle().getBackgroundColor());
         bd.append(slide.getStyle().getTextColor());
         
-        Node temp = slide.getElem().head;
+        Node<ListItem> temp = slide.getElem().head;
         //Passado pelos elementos armazenados no Slide
         while(temp != null){
             bd.append(slide.getStyle().getBackgroundColor());
             bd.append(slide.getStyle().getTextColor());
-            texto = temp.getElement().toString();
+            texto = temp.getElement().getText();
             
             //Ajusta e adicionar as bordar do texto além de providênciar os respectivos cortes
             bd.append(contLetras(texto));
