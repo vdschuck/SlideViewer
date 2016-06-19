@@ -233,7 +233,10 @@ public class SinglyLinkedList<E> implements List<E> {
 
         return current.getElement();
     }
-
+    
+    public E getLast(){
+        return get(numElements -1);
+    }
     /* (non-Javadoc)
 	 * @see br.unisinos.prog2lab2.List#search(java.lang.Object)
      */
