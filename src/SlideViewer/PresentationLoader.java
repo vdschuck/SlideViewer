@@ -142,20 +142,30 @@ public class PresentationLoader {
         int cont =1;
         //Numero que será usadado pra imprimir as letras, 97 é o ASCII de a.
         int let = 97;
+        ListItem ls = new ListItem("",0);
         try{
             while ((lines = in.readLine()) != null){
                 if("/content".equals(lines)){
                     break;
                 }
                 //Quando há letras
-                else if(lines.startsWith("#",1)){
-                    ListItem ls = new ListItem(lines,let);
-                    s.addElement(ls.getText());
-                    let++;
+                else if(lines.startsWith("#",1) || lines.startsWith("*", 1)){
+                    int contSub = 1; 
+                    //Letras
+                    if(lines.startsWith("#",1)){
+                        ls.adicionarTopico(ls,let,lines);
+                        let++;
+                    }
+                    //Numeros
+                    else{
+                       ls.adicionarTopico(ls,contSub,lines);
+                       contSub++; 
+                    }
+                    s.addElement(ls.getLastSupTopico());
                 }
-                //Apenas numeração
                 else{
-                    ListItem ls = new ListItem(lines,cont);
+                    ls = new ListItem(lines,cont);
+                    ls.adicionarTopico(ls, cont,lines);
                     s.addElement(ls.getText());
                     cont++;
                 }
