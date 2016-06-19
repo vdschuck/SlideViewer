@@ -61,9 +61,25 @@ public class PresentationWriter {
             buffer.append("\n style=").append(p.getSlide(i).getStyle().getId());
             buffer.append("\n content \n");
             
-            temp = p.getSlide(i).getElem().head;       
+            temp = p.getSlide(i).getElem().head; 
+            String conteudo;
             while(temp != null){
-                buffer.append(temp.element.toString());
+                conteudo = temp.element.toString();
+                //Ajusta os conteúdos escrevendo novamente em códigos
+                if(conteudo.startsWith("*", 9)){
+                    buffer.append(conteudo.substring(8));
+                }
+                else if(conteudo.startsWith(".",1)){
+                    buffer.append("#");
+                    buffer.append(conteudo.substring(3));
+                }
+                else if(conteudo.startsWith(")",9)){
+                    buffer.append("## ");
+                    buffer.append(conteudo.substring(10));
+                }
+                else{
+                    buffer.append(conteudo);
+                }
                 buffer.append("\n");
                 temp = temp.next;
             } 
