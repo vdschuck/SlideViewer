@@ -22,7 +22,12 @@ public class PresentationEditor {
     }
     
     public void changeTitle(Title title, int page, Presentation pres){
-        pres.getSlide(page).setTitle(title);
+        try{
+            pres.getSlide(page).setTitle(title);
+        }
+        catch(Exception e){
+            System.out.println("Erro ao mudar o titulo");
+        }
     }    
     
     public void addElement(Element item, int parentItem, int page, Presentation pres){
