@@ -1,13 +1,15 @@
 package SlideViewer;
 
-public class ListItem extends Element {
+public class ListItem<E> extends Element {
     private int order;
     int level;
+    SinglyLinkedList<ListItem> subTopicos;
     
     public ListItem(String e, int pos) {
        super(e);
        order = pos;
-       adicionarTopico();
+       level = 1;
+       subTopicos = new SinglyLinkedList();
     }
 
     public int getOrder() {
@@ -17,25 +19,47 @@ public class ListItem extends Element {
     public void setOrder(int order) {
         this.order = order;
     }    
+
+    public SinglyLinkedList<ListItem> getSubTopicos() {
+        return subTopicos;
+    }
     
-    public void adicionarTopico(){
-        //Adicionado o valor em uma váriavel para facilitar o manuseio
-        String line = super.getText();
-        if(line.startsWith("#",0) && line.startsWith(" ",2)){
-               char letras = (char)order;
-               super.setText(letras + ")" + line.substring(3));
-               setLevel(2);
-        }
-        //Adiciona um recuo para segundo nível.
-        else if(line.startsWith(" ",2) && line.startsWith("*",0)){
-                setLevel(2);
-        }
+    public String getLastSupTopico(){
+        return subTopicos.tail.getElement().getText();
+    }
+
+    public void setSubTopicos(ListItem<E> subTop) {
+        subTopicos.insertLast(subTop);
+    }
+    
+    public void adicionarTopico(ListItem item,int pos,String line){
         
+        if(line.startsWith("#",0) && line.startsWith(" ",2) || line.startsWith(" ",2) && line.startsWith("*",0)){ 
+               String texto = adicionarSupTopico(line,pos);
+               ListItem newSubTop = new ListItem(texto, pos);
+               newSubTop.setLevel(item.getLevel() + 1);
+               item.setSubTopicos(newSubTop);
+        }
         else if(line.startsWith("#")){
-               super.setText(order + ". " + line.substring(1));
+               item.setText(order + ". " + line.substring(1));
+        }
+        else{
+            item.setText(line);
         }
     }
  
+    public String adicionarSupTopico(String line, int pos){
+          String textoFinal = line;
+          if(line.startsWith("#",0) && line.startsWith(" ",2)){ 
+               char letras = (char)pos;
+               textoFinal = letras + ")" + line.substring(3);
+          }
+          else if(line.startsWith(" ",2) && line.startsWith("*",0)){          
+                textoFinal = line;
+          }
+          return textoFinal;
+    }
+    
     public int getLevel() {
         return level;
     }
@@ -51,4 +75,3 @@ public class ListItem extends Element {
         super.setText(lv.toString());
     } 
 }
-
