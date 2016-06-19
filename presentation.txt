@@ -15,7 +15,7 @@ slide
 title=Apresentação sobre Slide Viewer
 0style=1
 content
-* Especificaçãoo do arquivo e estrutura de dados
+* Especificação do arquivo e estrutura de dados
 /content
 /slide
 
