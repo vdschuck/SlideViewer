@@ -4,9 +4,9 @@ public class Slide<E> implements Printable{
 
     private Title title;
     private Style style;
-    private SinglyLinkedList<E> elem = new SinglyLinkedList();
+    private SinglyLinkedList<ListItem> elem = new SinglyLinkedList();
 
-    public  E getElem(E element) {
+    public  ListItem getElem(ListItem<E> element) {
         int i = elem.search(element);
         if(i > 0){
             return elem.get(i);
@@ -20,7 +20,7 @@ public class Slide<E> implements Printable{
         return elem;
     }
 
-    public void addElement(E texto) {
+    public void addElement(ListItem texto) {
         elem.insertLast(texto);
     }
 
