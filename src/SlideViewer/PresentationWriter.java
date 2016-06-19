@@ -53,7 +53,7 @@ public class PresentationWriter {
      
     public String slideWrite(PrintWriter out, Presentation p) {
         StringBuilder buffer = new StringBuilder();
-        Node temp;
+        Node<ListItem> temp;
         
         for (int i = 0; i < p.getSlides().numElements; i++) {
             buffer.append("\n slide");
@@ -64,7 +64,7 @@ public class PresentationWriter {
             temp = p.getSlide(i).getElem().head; 
             String conteudo;
             while(temp != null){
-                conteudo = temp.element.toString();
+                conteudo = temp.element.getText();
                 //Ajusta os conteúdos escrevendo novamente em códigos
                 if(conteudo.startsWith("*", 9)){
                     buffer.append(conteudo.substring(8));
