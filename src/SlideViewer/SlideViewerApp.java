@@ -70,19 +70,22 @@ public class SlideViewerApp {
                                         else if(numPos < 0){
                                             throw new UnderflowException();
                                         }
-                                        else{         
-                                            Title nTitle = new Title(JOptionPane.showInputDialog("Digite o titulo que deseja"));
-                                            edit.changeTitle(nTitle, numPos, pp);
+                                        else{ 
+                                            String titulo = JOptionPane.showInputDialog("Digite o titulo que deseja");
+                                            if(titulo.length() > 57){
+                                                JOptionPane.showMessageDialog(null, "Digite um número de caracteres válido", "Erro de escrita", JOptionPane.ERROR_MESSAGE); 
+                                            }
+                                            else{
+                                                Title nTitle = new Title(titulo);
+                                                edit.changeTitle(nTitle, numPos, pp);
+                                            }
                                         }
                                     }                             
                                     catch(IndexOutOfBoundsException e){
-                                        System.out.println("O slide escolhido não é válido");
+                                         JOptionPane.showMessageDialog(null, "O slide escolhido não é válido", "Erro na leitura", JOptionPane.ERROR_MESSAGE);
                                     }
                                     catch(UnderflowException e){
-                                        System.out.println("Digite um slide maior");
-                                    }
-                                    catch(Exception e){
-                                        System.out.println("Não foi possível encontrar esse slide");
+                                        JOptionPane.showMessageDialog(null, "Digite um slide maior", "Erro na leitura", JOptionPane.ERROR_MESSAGE);
                                     }
                                     break;
                                 }
