@@ -149,17 +149,13 @@ public class PresentationLoader {
                 }
                 //Quando há letras
                 else if(lines.startsWith("#",1)){
-                    ListIthem ls = new ListIthem(lines);
-                    ls.setOrder(let);
-                    ls.adicionarTopico(ls);
+                    ListItem ls = new ListItem(lines,let);
                     s.addElement(ls.getText());
                     let++;
                 }
                 //Apenas numeração
                 else{
-                    ListIthem ls = new ListIthem(lines);
-                    ls.setOrder(cont);
-                    ls.adicionarTopico(ls);
+                    ListItem ls = new ListItem(lines,cont);
                     s.addElement(ls.getText());
                     cont++;
                 }
