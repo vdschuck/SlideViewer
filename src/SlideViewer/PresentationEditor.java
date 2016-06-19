@@ -31,11 +31,12 @@ public class PresentationEditor {
     }    
     
     public void addElement(Element item, int parentItem, int page, Presentation pres){
-        try{
-            pres.getSlide(page).addElement(item.getText());
-        }
-        catch(Exception e){
-            System.out.println("Erro ao adicionar tópico");
-        }
+//        try{
+//            if(pres.getSlide(page).getElem(element))          
+//                pres.getSlide(page).addElement(item.getText());
+//        }
+//        catch(Exception e){
+//            System.out.println("Erro ao adicionar tópico");
+//        }
     }
 }
