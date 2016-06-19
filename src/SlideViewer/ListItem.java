@@ -24,8 +24,8 @@ public class ListItem<E> extends Element {
         return subTopicos;
     }
     
-    public String getLastSupTopico(){
-        return subTopicos.tail.getElement().getText();
+    public ListItem getLastSupTopico(){
+        return subTopicos.tail.getElement();
     }
 
     public void setSubTopicos(ListItem<E> subTop) {
