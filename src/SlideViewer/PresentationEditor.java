@@ -1,10 +1,11 @@
 package SlideViewer;
 
+import javax.swing.JOptionPane;
 
 public class PresentationEditor {
     
     public void addSlide(Slide slide, int order, Presentation pres){
-       pres.getSlides().insert(slide, order);       
+       pres.getSlides().insert(slide, order);
     }
     
     public void duplica(int page, Presentation pres){
@@ -23,7 +24,13 @@ public class PresentationEditor {
     
     public void changeTitle(Title title, int page, Presentation pres){
         try{
-            pres.getSlide(page).setTitle(title);
+            if(title.getText().length() > 57){
+                JOptionPane.showMessageDialog(null, "Digite um número de caracteres válido", "Erro de escrita", JOptionPane.ERROR_MESSAGE);
+            }
+            else{
+                pres.getSlide(page).setTitle(title);
+            }
+            
         }
         catch(Exception e){
             System.out.println("Erro ao mudar o titulo");

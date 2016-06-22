@@ -41,7 +41,13 @@ public class SlideViewerApp {
                             switch (sub) {
                                 case 1: {
                                     int pos = ReadData.readIntSlide("Posição do slide: ", pp.getSlides().numElements);
-                                    edit.addSlide(pp.getSlide(pos), pos, pp);
+                                    Title nTitulo = new Title(JOptionPane.showInputDialog("Digite o titulo que deseja"));
+                                    int estilo = ReadData.readIntSlide("Digite o código do estilo", pp.getStyles().numElements);
+                                    
+                                    Slide novoSlide = new Slide();
+                                    novoSlide.setStyle(pp.getStyle(estilo));
+                                    edit.addSlide(novoSlide, pos, pp);
+                                    edit.changeTitle(nTitulo, pos, pp);
                                     break;
                                 }
                                 case 2: {
@@ -64,14 +70,8 @@ public class SlideViewerApp {
                                     int pos = ReadData.readIntSlide("A posição do slide que deseja alterar o titulo: ", pp.getSlides().numElements);
                                     try{
                                         String titulo = JOptionPane.showInputDialog("Digite o titulo que deseja");
-                                        if(titulo.length() > 57){
-                                            JOptionPane.showMessageDialog(null, "Digite um número de caracteres válido", "Erro de escrita", JOptionPane.ERROR_MESSAGE); 
-                                        }
-                                        else{
-                                            Title nTitle = new Title(titulo);
-                                            edit.changeTitle(nTitle, pos, pp);
-                                        }
-                                        
+                                        Title nTitle = new Title(titulo);
+                                        edit.changeTitle(nTitle, pos, pp);
                                     }
                                     catch(Exception e){
                                          JOptionPane.showMessageDialog(null, "Verique as informações digitadas", "Erro na leitura", JOptionPane.ERROR_MESSAGE);

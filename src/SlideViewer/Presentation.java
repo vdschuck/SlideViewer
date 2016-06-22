@@ -38,6 +38,9 @@ public class Presentation<E> {
         return style.get(index);
     }
 
+    public SinglyLinkedList getStyles(){
+        return style;
+    }
     public Footer getFoo() {
         return foo;
     }
