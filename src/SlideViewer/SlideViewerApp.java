@@ -78,12 +78,32 @@ public class SlideViewerApp {
                                     break;
                                 }
                                 case 6: {
-//                                    int pos = ReadData.readIntSlide("Slide que deseja adicionar texto: ", pp.getSlides().numElements);
-//                                    String texto = JOptionPane.showInputDialog("Digite o texto que gostaria de adicionar");
-//                                    String linhaPos = JOptionPane.showInputDialog("Digite onde gostaria a posição onde gostaria de colocar");
-//                                    int posLinha = Integer.parseInt(linhaPos);
-//                                    ListItem newItem = new ListItem(texto,posLinha);
-//                                    edit.addElement(newItem, posLinha,pos, pp);
+                                   int page = ReadData.readIntSlide("Slide que deseja adicionar texto: ", pp.getSlides().numElements);
+                                    
+                                    String texto = JOptionPane.showInputDialog("Digite o texto que gostaria de adicionar"); 
+                                    
+                                    String topicoPos = JOptionPane.showInputDialog("O texto é 1-Item ou 2-Sub-item: ");
+                                    int topico = Integer.parseInt(topicoPos); 
+                                     
+                                    String simbolos = JOptionPane.showInputDialog("O texto é 1-numerado ou 2-simbolos: "); 
+                                    
+                                    Node<ListItem> current = pp.getSlide(page).getElem().head;
+                                   
+                                    if(topico == 2){                                       
+                                        String posSub = JOptionPane.showInputDialog("Digite a posição do item para o sub-item: "); 
+                                       int teste = Integer.parseInt(posSub);
+                                       
+                                       for(int i=0; i<teste; i++){
+                                           current = current.getNext();
+                                       }
+                                       edit.addElement(current.element, topico, page, pp);                                       
+                                       current.element.adicionarSupTopico(texto, current.element.getSubTopicos().numElements); 
+                                    
+                                    }else if (topico == 1){
+                                       ListItem newItem = new ListItem(texto, 0);
+                                       newItem.adicionarTopico(newItem, 0, texto);
+                                       pp.getSlide(page).addElement(newItem);
+                                    } 
                                     break;
                                 }
                                 case 7:{
