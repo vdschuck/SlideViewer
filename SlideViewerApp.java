@@ -78,12 +78,12 @@ public class SlideViewerApp {
                                     break;
                                 }
                                 case 6: {
-                                    int pos = ReadData.readIntSlide("Slide que deseja adicionar texto: ", pp.getSlides().numElements);
-                                    String texto = JOptionPane.showInputDialog("Digite o texto que gostaria de adicionar");
-                                    String linhaPos = JOptionPane.showInputDialog("Digite onde gostaria a posição onde gostaria de colocar");
-                                    int posLinha = Integer.parseInt(linhaPos);
-                                    ListItem newItem = new ListItem(texto,posLinha);
-                                    edit.addElement(newItem, posLinha,pos, pp);
+//                                    int pos = ReadData.readIntSlide("Slide que deseja adicionar texto: ", pp.getSlides().numElements);
+//                                    String texto = JOptionPane.showInputDialog("Digite o texto que gostaria de adicionar");
+//                                    String linhaPos = JOptionPane.showInputDialog("Digite onde gostaria a posição onde gostaria de colocar");
+//                                    int posLinha = Integer.parseInt(linhaPos);
+//                                    ListItem newItem = new ListItem(texto,posLinha);
+//                                    edit.addElement(newItem, posLinha,pos, pp);
                                     break;
                                 }
                                 case 7:{
