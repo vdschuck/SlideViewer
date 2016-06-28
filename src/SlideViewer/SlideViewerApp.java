@@ -90,7 +90,7 @@ public class SlideViewerApp {
                                     break;
                                 }
                                 case 7:{
-                                    String fileName = JOptionPane.showInputDialog("Nomde do arquivo que deseja salvar: "); 
+                                    String fileName = JOptionPane.showInputDialog("Nome do arquivo que deseja salvar: "); 
                                     PresentationWriter salvar = new PresentationWriter();
                                     salvar.save(fileName, pp);
                                 }
