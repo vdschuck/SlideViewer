@@ -14,7 +14,7 @@ public class PresentationWriter {
             out.println(styleWrite(out, p));
             out.println(footerWrite(out, p));
             out.println(slideWrite(out, p));
-            out.println("\n /presentation");            
+            out.println("\n/presentation");            
 
         } catch (Exception e) {
             System.out.println("PresentationWriter ERRO: " + e);
@@ -25,16 +25,16 @@ public class PresentationWriter {
      public String styleWrite(PrintWriter out, Presentation p) {
         StringBuilder buffer = new StringBuilder();       
         
-        buffer.append("\n styles");        
+        buffer.append("\nstyles");        
         for(int i=0; i<2; i++){
-            buffer.append("\n style=");
+            buffer.append("\nstyle=");
             buffer.append(p.getStyle(i).getId()).append(";");
             buffer.append(p.getStyle(i).getTextColorWrite()).append(";");
             buffer.append(p.getStyle(i).getBackgroundColorWrite()).append(";");
             buffer.append(p.getStyle(i).getTitleTextColorWrite()).append(";");
             buffer.append(p.getStyle(i).getTitleBackColorWrite()); 
         }        
-        buffer.append("\n /styles");       
+        buffer.append("\n/styles");       
         
         return buffer.toString();
     }
@@ -42,11 +42,11 @@ public class PresentationWriter {
      public String footerWrite(PrintWriter out, Presentation p){
          StringBuilder buffer = new StringBuilder();
          
-         buffer.append("\n footer");
-         buffer.append("\n left=").append(p.getFoo().getLeft());         
-         buffer.append("\n center=").append(p.getFoo().getCenter());         
-         buffer.append("\n right=").append(p.getFoo().getRight());        
-         buffer.append("\n /footer");
+         buffer.append("\nfooter");
+         buffer.append("\nleft=").append(p.getFoo().getLeft());         
+         buffer.append("\ncenter=").append(p.getFoo().getCenter());         
+         buffer.append("\nright=").append(p.getFoo().getRight());        
+         buffer.append("\n/footer");
          
          return buffer.toString();
      }
@@ -56,10 +56,10 @@ public class PresentationWriter {
         Node<ListItem> temp;
         
         for (int i = 0; i < p.getSlides().numElements; i++) {
-            buffer.append("\n slide");
-            buffer.append("\n title=").append(p.getSlide(i).getTitle().print());
-            buffer.append("\n style=").append(p.getSlide(i).getStyle().getId());
-            buffer.append("\n content \n");
+            buffer.append("\nslide");
+            buffer.append("\ntitle=").append(p.getSlide(i).getTitle().print());
+            buffer.append("\nstyle=").append(p.getSlide(i).getStyle());
+            buffer.append("\ncontent\n");
             
             temp = p.getSlide(i).getElem().head; 
             String conteudo;
@@ -84,8 +84,8 @@ public class PresentationWriter {
                 temp = temp.next;
             } 
             
-            buffer.append("/content \n");
-            buffer.append("/slide \n");
+            buffer.append("/content\n");
+            buffer.append("/slide\n");
         }
         return buffer.toString();
 
