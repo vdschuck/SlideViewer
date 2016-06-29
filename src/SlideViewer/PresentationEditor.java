@@ -44,10 +44,16 @@ public class PresentationEditor {
             //SE FOR NUMEROS
             if (pagination == 1) {
                 item = "# " + item;
+                Node<ListItem> temp = pres.getSlide(page).getElem().head;
+                for(int i = 0;i < pres.getSlide(page).getElem().numElements;i++){
+                    if(temp.element.getText().startsWith(".", 1)){
+                        cont++;
+                    }
+                    temp = temp.getNext();
+                }
                 newItem = new ListItem(item, cont);
                 newItem.adicionarTopico(newItem, cont, item);
                 pres.getSlide(page).addElement(newItem);
-                cont++;
             } 
             //SE FOR SIMBOLOS
             else if (pagination == 2) {
@@ -63,6 +69,12 @@ public class PresentationEditor {
             //SE FOR NUMEROS
             if (pagination == 1) {
                 item = "## " + item;
+                Node<ListItem> temp = pres.getSlide(page).getElem().tail;
+                for(int i = 0;i < temp.getElement().getSubTopicos().numElements;i++){
+                        if(temp.element.getText().startsWith(")", 9)){
+                            letras++;
+                        }      
+                }
                 newItem.adicionarTopico(newItem, letras, item);
                 letras++;
                 pres.getSlide(page).addElement(newItem.getLastSupTopico());
