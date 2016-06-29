@@ -58,7 +58,9 @@ public class PresentationWriter {
         for (int i = 0; i < p.getSlides().numElements; i++) {
             buffer.append("\nslide");
             buffer.append("\ntitle=").append(p.getSlide(i).getTitle().print());
-            buffer.append("\nstyle=").append(p.getSlide(i).getStyle());
+            buffer.append("\n");
+            buffer.append(p.getPosStyle(p.getSlide(i).getStyle()));
+            buffer.append("style=").append(p.getSlide(i).getStyle());
             buffer.append("\ncontent\n");
             
             temp = p.getSlide(i).getElem().head; 
