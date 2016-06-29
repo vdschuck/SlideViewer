@@ -16,7 +16,7 @@ public class Slide<E> implements Printable{
         }
     }
     
-    public SinglyLinkedList getElem(){
+    public SinglyLinkedList<ListItem> getElem(){
         return elem;
     }
 
