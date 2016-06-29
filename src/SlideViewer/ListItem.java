@@ -33,11 +33,10 @@ public class ListItem<E> extends Element {
     }
     
     public void adicionarTopico(ListItem item,int pos,String line){
-        
-        if(line.startsWith("#",0) && line.startsWith(" ",2) || line.startsWith(" ",2) && line.startsWith("*",0)){ 
-               String texto = adicionarSupTopico(line,pos);
+        if(line.startsWith("#",1) || line.startsWith("*",1)){ 
+               String texto = adicionarSupTopico(line,pos,item.getLevel() + 1);
                ListItem newSubTop = new ListItem(texto, pos);
-               newSubTop.setLevel(item.getLevel() + 1);
+               newSubTop.level++;
                item.setSubTopicos(newSubTop);
         }
         else if(line.startsWith("#")){
@@ -48,30 +47,32 @@ public class ListItem<E> extends Element {
         }
     }
  
-    public String adicionarSupTopico(String line, int pos){
-          String textoFinal = line;
-          if(line.startsWith("#",0) && line.startsWith(" ",2)){ 
+    public String adicionarSupTopico(String line, int pos, int nivel){
+          StringBuilder textoFinal = new StringBuilder(); 
+          textoFinal.append(setLevel(nivel));
+          if(line.startsWith("#",1)){ 
                char letras = (char)pos;
-               textoFinal = letras + ")" + line.substring(3);
+               textoFinal.append(letras);
+               textoFinal.append(")");
+               textoFinal.append(line.substring(3));
           }
-          else if(line.startsWith(" ",2) && line.startsWith("*",0)){          
-                textoFinal = line;
+          else if(line.startsWith("*",1)){          
+                textoFinal.append(line);
           }
-          return textoFinal;
+          return textoFinal.toString();
     }
     
     public int getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
+    public String setLevel(int level) {
         StringBuilder lv = new StringBuilder();
         for(int i = 1; i < level;i++){
             //=\t
             lv.append("        ");
         }
-        lv.append(super.getText());
-        
-        super.setText(lv.toString());
+        level++;
+        return lv.toString();
     } 
 }
