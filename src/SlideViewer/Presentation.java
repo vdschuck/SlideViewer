@@ -37,6 +37,10 @@ public class Presentation<E> {
     public Style getStyle(int index) {      
         return style.get(index);
     }
+    
+    public int getPosStyle(Style s){
+        return style.search(s);
+    }
 
     public SinglyLinkedList getStyles(){
         return style;
