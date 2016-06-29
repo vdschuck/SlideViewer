@@ -75,9 +75,9 @@ public class PresentationEditor {
                             letras++;
                         }      
                 }
-                newItem.adicionarTopico(newItem, letras, item);
+                newItem = new ListItem(item,letras);
+                pres.getSlide(page).addSubElement(newItem);
                 letras++;
-                pres.getSlide(page).addElement(newItem.getLastSupTopico());
             } 
             //SE FOR SIMBOLOS
             else if (pagination == 2) {
