@@ -51,8 +51,7 @@ public class ListItem<E> extends Element {
           StringBuilder textoFinal = new StringBuilder(); 
           textoFinal.append(setLevel(nivel));
           if(line.startsWith("#",1)){ 
-               char letras = (char)pos;
-               textoFinal.append(letras);
+               textoFinal.append((char)pos);
                textoFinal.append(")");
                textoFinal.append(line.substring(3));
           }
