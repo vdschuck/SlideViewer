@@ -16,18 +16,14 @@ public class Slide<E> implements Printable{
         }
     }
     
-    public SinglyLinkedList<ListItem> getElem(){
+    public SinglyLinkedList getElem(){
         return elem;
     }
 
     public void addElement(ListItem texto) {
         elem.insertLast(texto);
     }
-    
-    public void addSubElement(ListItem subTexto){
-        elem.tail.element.adicionarTopico(elem.tail.element, subTexto.getOrder(), subTexto.getText());
-    }
-    
+
     public Title getTitle() {
         return title;
     }

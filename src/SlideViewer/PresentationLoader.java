@@ -16,6 +16,8 @@ public class PresentationLoader {
         in = new BufferedReader(fr);
         String line;
         
+        //Quantidade de slides
+        //Slide slides[] = new Slide[4];
         //Slides que está criando
         int nSlide = 0;
         //Variavel que será montada e retornada pelo método

@@ -13,7 +13,8 @@ public class SlideViewerApp {
             SlideDesigner sd = new SlideDesigner();
             Navigator<SinglyLinkedList> nav = new Navigator(pp.getSlides());
             System.out.println(sd.drawSlide(pp.getSlide(nav.getCurrent()), nav.getCurrent(), pp.getFoo()));
-            
+            PresentationWriter salvar = new PresentationWriter();
+            salvar.save("teste.txt", pp);
 
             int op = 0;
             do {
@@ -34,19 +35,13 @@ public class SlideViewerApp {
                             System.out.println(sd.drawSlide(pp.getSlide(nav.getCurrent()), nav.getCurrent(), pp.getFoo()));
                             break;
                         case 4:
-                            int sub = ReadData.readIntSub(" 0-Sair\n 1-Adicionar Slide\n 2-Duplicar Slide\n 3-Remover Slide\n 4-Mover Slide\n 5-Alterar Titulo\n 6-Adicionar Texto\n 7- Salva alterações");
+                            int sub = ReadData.readIntSub(" 0-Sair\n 1-Adicionar Slide\n 2-Duplicar Slide\n 3-Remover Slide\n 4-Mover Slide\n 5-Alterar Titulo\n 6-Adicionar Texto");
                             PresentationEditor edit = new PresentationEditor();
 
                             switch (sub) {
                                 case 1: {
                                     int pos = ReadData.readIntSlide("Posição do slide: ", pp.getSlides().numElements);
-                                    Title nTitulo = new Title(JOptionPane.showInputDialog("Digite o titulo que deseja"));
-                                    int estilo = ReadData.readIntSlide("Digite o código do estilo", pp.getStyles().numElements);
-                                    
-                                    Slide novoSlide = new Slide();
-                                    novoSlide.setStyle(pp.getStyle(estilo));
-                                    edit.addSlide(novoSlide, pos, pp);
-                                    edit.changeTitle(nTitulo, pos, pp);
+                                    edit.addSlide(pp.getSlide(pos), pos, pp);
                                     break;
                                 }
                                 case 2: {
@@ -69,8 +64,14 @@ public class SlideViewerApp {
                                     int pos = ReadData.readIntSlide("A posição do slide que deseja alterar o titulo: ", pp.getSlides().numElements);
                                     try{
                                         String titulo = JOptionPane.showInputDialog("Digite o titulo que deseja");
-                                        Title nTitle = new Title(titulo);
-                                        edit.changeTitle(nTitle, pos, pp);
+                                        if(titulo.length() > 57){
+                                            JOptionPane.showMessageDialog(null, "Digite um número de caracteres válido", "Erro de escrita", JOptionPane.ERROR_MESSAGE); 
+                                        }
+                                        else{
+                                            Title nTitle = new Title(titulo);
+                                            edit.changeTitle(nTitle, pos, pp);
+                                        }
+                                        
                                     }
                                     catch(Exception e){
                                          JOptionPane.showMessageDialog(null, "Verique as informações digitadas", "Erro na leitura", JOptionPane.ERROR_MESSAGE);
@@ -78,21 +79,13 @@ public class SlideViewerApp {
                                     break;
                                 }
                                 case 6: {
-                                   int page = ReadData.readIntSlide("Numero do slide para adicionar texto: ", pp.getSlides().numElements);
-                                    
-                                    String item = JOptionPane.showInputDialog("Texto para adicionar no slide: "); 
-                                    
-                                    int level = ReadData.readIntTwo("O texto é 1-Item ou 2-Sub-item: ");                                    
-                                     
-                                    int pagination = ReadData.readIntTwo("O texto é 1-numerado ou 2-simbolos: "); 
-                                    
-                                    edit.addElement(item, page, pp, level, pagination);
+                                    int pos = ReadData.readIntSlide("Slide que deseja adicionar texto: ", pp.getSlides().numElements);
+                                    String texto = JOptionPane.showInputDialog("Digite o texto que gostaria de adicionar");
+                                    String linhaPos = JOptionPane.showInputDialog("Digite onde gostaria a posição onde gostaria de colocar");
+                                    int posLinha = Integer.parseInt(linhaPos);
+                                    ListItem newItem = new ListItem(texto,posLinha);
+                                    edit.addElement(newItem, posLinha,pos, pp);
                                     break;
-                                }
-                                case 7:{
-                                    String fileName = JOptionPane.showInputDialog("Nome do arquivo que deseja salvar: "); 
-                                    PresentationWriter salvar = new PresentationWriter();
-                                    salvar.save(fileName, pp);
                                 }
                             }
                             break;
